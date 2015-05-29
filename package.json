@@ -1,0 +1,29 @@
+{
+  "name": "encountr",
+  "version": "0.1.0",
+  "description": "An encounter manager built with react.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "es6",
+    "dnd",
+    "encounter"
+  ],
+  "author": "Uku Tammet",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.1",
+    "gulp": "^3.8.11",
+    "gulp-server-livereload": "^1.3.2",
+    "uglifyify": "^3.0.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
