@@ -20,7 +20,9 @@ class EntitiesArea extends React.Component {
               entities={entities}
               onChangeHealth={this.props.onChangeHealth}
               onRemoveEntity={this.props.onRemoveEntity}
-              onDrag={this.props.onDrag} />
+              onDrag={this.props.onDrag}
+              onAddNote={this.props.onAddNote}
+              onRemoveNote={this.props.onRemoveNote} />
           </div>
         </div>
       );

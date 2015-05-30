@@ -55,6 +55,22 @@ class MainComponent extends React.Component {
     EntityStorage.setEntities(state.entities);
   }
 
+  addEntityNote (entityId, note) {
+    let state = this.state;
+    let entityIndex = this.getEntityIndexById(entityId);
+    state.entities[entityIndex].addNote(note);
+    this.setState(state);
+    EntityStorage.setEntities(state.entities);
+  }
+
+  removeEntityNote (entityId, note) {
+    let state = this.state;
+    let entityIndex = this.getEntityIndexById(entityId);
+    state.entities[entityIndex].removeNote(note);
+    this.setState(state);
+    EntityStorage.setEntities(state.entities);
+  }
+
   addNewEntity (entity) {
     let state = this.state;
     for (let i = 0; i <= state.entities.length; i++) {
@@ -91,7 +107,9 @@ class MainComponent extends React.Component {
           onNewTurn={this.doTurn.bind(this)}
           onChangeHealth={this.changeEntityHealth.bind(this)}
           onRemoveEntity={this.removeEntity.bind(this)}
-          onDrag={this.changeOrderByDrag.bind(this)}/>
+          onDrag={this.changeOrderByDrag.bind(this)} 
+          onRemoveNote={this.removeEntityNote.bind(this)}
+          onAddNote={this.addEntityNote.bind(this)} />
       </div>
     );
   }

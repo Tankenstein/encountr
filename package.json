@@ -1,8 +1,8 @@
 {
   "name": "encountr",
-  "version": "0.1.0",
-  "description": "An encounter manager built with react.",
-  "main": "index.js",
+  "version": "0.2.0",
+  "description": "A D&D encounter manager built with react.",
+  "main": "src/mount.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

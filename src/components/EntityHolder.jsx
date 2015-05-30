@@ -1,4 +1,5 @@
 import React from 'react';
+import Note from './Note.jsx';
 
 class EntityHolder extends React.Component {
   constructor(props) {
@@ -35,6 +36,20 @@ class EntityHolder extends React.Component {
     this.props.onRemoveEntity(this.props.entity.id);
   }
 
+  onAddNote (e) {
+    e.preventDefault();
+    const inputNode = React.findDOMNode(this.refs.noteInput);
+    const inputValue = inputNode.value.trim();
+    if (inputValue.length > 0) {
+      this.props.onAddNote(this.props.entity.id, inputValue);
+      inputNode.value = '';
+    }
+  }
+
+  onRemoveNote (note) {
+    this.props.onRemoveNote(this.props.entity.id, note);
+  }
+
   getLiClassName () {
     const entity = this.props.entity;
     let liClassName = 'list-group-item';
@@ -55,10 +70,67 @@ class EntityHolder extends React.Component {
     return liClassName;
   }
 
+  getNotesNode () {
+    if (this.state.notesOpened) {
+      let notesList = '';
+      if (this.props.entity.notes.length > 0) {
+        const notes = this.props.entity.notes.map((note, index) => {
+          return (
+            <Note
+              className="notes-list-item"
+              key={index}
+              note={note}
+              onRemove={this.onRemoveNote.bind(this)} />
+          );
+        });
+
+        notesList = <ul className="notes-list" > {notes} </ul>;
+      }
+
+      return (
+        <div
+          className="col-xs-12"
+          style={{marginTop: '10px'}}>
+          <form onSubmit={this.onAddNote.bind(this)}>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Add note"
+              ref="noteInput" />
+          </form>
+          {notesList}
+        </div>
+      );
+    } else {
+      return;
+    }
+  }
+
+  toggleNotes () {
+    let state = this.state;
+    state.notesOpened = state.notesOpened ? false : true;
+    this.setState(state);
+  }
+
+  getNotesIconClass () {
+    let iconClass = 'glyphicon ';
+    
+    if (this.state.notesOpened) {
+      iconClass += 'glyphicon-menu-up';
+    } else if (this.props.entity.notes.length > 0) {
+      iconClass += 'glyphicon-menu-down';
+    } else {
+      iconClass += 'glyphicon-pencil';
+    }
+
+    return iconClass;
+  }
 
   render () {
     const liClassName = this.getLiClassName();
     const entity = this.props.entity;
+    const notesNode = this.getNotesNode();
+    const notesIconClass = this.getNotesIconClass();
 
     return (
       <li
@@ -68,14 +140,14 @@ class EntityHolder extends React.Component {
         onDragEnd={this.props.onDragEnd}
         data-id={entity.id} >
         <div className="row">
-          <div className="col-xs-4 col-sm-6 col-lg-7" style={{paddingTop:'5px'}}>
+          <div className="col-xs-4 col-sm-5 col-lg-6" style={{paddingTop:'5px'}}>
             <b> {entity.name} </b> with
             <b> {entity.health} </b> hp
           </div>
 
-          <div className="col-xs-8 col-sm-6 col-lg-5" style={{textAlign: 'right'}}>
+          <div className="col-xs-8 col-sm-7 col-lg-6" style={{textAlign:'right'}}>
 
-            <div className="col-xs-11">
+            <div className="col-xs-9">
               <div className="input-group input-group-sm">
                 <span className="input-group-btn">
                   <button
@@ -101,6 +173,18 @@ class EntityHolder extends React.Component {
               </div>
             </div>
 
+            <div className="col-xs-1">
+              <button
+                type="button"
+                className="btn btn-info btn-sm"
+                aria-label="note"
+                onClick={this.toggleNotes.bind(this)} >
+                <span
+                  aria-hidden="true"
+                  className={notesIconClass} />
+              </button>
+            </div>
+            
             <button
               type="button"
               className="close"
@@ -109,11 +193,14 @@ class EntityHolder extends React.Component {
               style={{paddingTop:'4px'}}>
               <span aria-hidden="true">&times;</span>
             </button>
+            
           </div>
+
+          {notesNode}
         </div>
       </li>
     );
   }
 }
- //<span className="glyphicon glyphicon-remove"></span>
+
 export default EntityHolder;

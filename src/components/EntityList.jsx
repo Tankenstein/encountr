@@ -2,6 +2,7 @@ import React from 'react';
 import EntityHolder from './EntityHolder.jsx';
 
 class EntityList extends React.Component {
+
   componentDidMount() {
     this.dragPlaceHolder = document.createElement('li');
     this.dragPlaceHolder.className = 'drag-placeholder';
@@ -57,7 +58,9 @@ class EntityList extends React.Component {
           onChangeHealth={this.props.onChangeHealth}
           onRemoveEntity={this.props.onRemoveEntity}
           onDragStart={this.onDragStart.bind(this)}
-          onDragEnd={this.onDragEnd.bind(this)} />
+          onDragEnd={this.onDragEnd.bind(this)}
+          onRemoveNote={this.props.onRemoveNote}
+          onAddNote={this.props.onAddNote} />
       );
     });
 

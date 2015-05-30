@@ -1,30 +1,28 @@
-import IDService from '../services/IDService';
+import Entity from '../models/Entity.jsx';
 
 export default {
   getEntities: function() {
-    let entities = localStorage.getItem('entities');
+    const entities = localStorage.getItem('entities');
     if (entities) {
-      let parsedEntities = JSON.parse(entities);
+      const parsedEntities = JSON.parse(entities);
       if (parsedEntities &&
           Array.isArray(parsedEntities) &&
           parsedEntities.length > 0 &&
           typeof parsedEntities[0] === 'object') {
-        let objectEntities = parsedEntities.map(entity => {
-          let healthInteger = parseInt(entity.health);
-          let initiativeInteger = parseInt(entity.initiative);
-          entity.health = healthInteger;
-          entity.initiative = initiativeInteger;
+        const objectEntities = parsedEntities.map(entity => {
+          const healthInteger = parseInt(entity.health);
+          const initiativeInteger = parseInt(entity.initiative);
+          const name = entity.name;
+          const newEntity = new Entity(name, initiativeInteger, healthInteger);
 
-          return entity;
-        })
-
-        let highestID = 0;
-        objectEntities.forEach(entity => {
-          if (entity.id >= highestID) {
-            highestID = entity.id + 1;
+          if (entity.notes) {
+            entity.notes.forEach(note => {
+              newEntity.addNote(note);
+            });
           }
-        });
-        IDService.setId(highestID);
+
+          return newEntity;
+        })
 
         return objectEntities;
       }
