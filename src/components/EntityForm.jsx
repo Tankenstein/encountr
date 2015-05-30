@@ -1,75 +1,76 @@
-import React from 'react/addons';
+import React from 'react';
 import Entity from '../models/Entity.jsx';
 
 class EntityForm extends React.Component {
-  constructor (props) {
-    super(props);
 
-    this.linkState = React.addons.LinkedStateMixin.linkState;
+  submit (e) {
+    e.preventDefault();
 
-    this.cleanState = {
-      name: '',
-      initiative: '',
-      health: ''
-    };
+    const nameNode = React.findDOMNode(this.refs.name);
+    const initiativeNode = React.findDOMNode(this.refs.initiative);
+    const healthNode = React.findDOMNode(this.refs.health);
 
-    this.state = this.cleanState;
-  }
+    let name = nameNode.value.trim();
+    let initiative = initiativeNode.value.trim();
+    let health = healthNode.value.trim();
 
-  submit () {
-    let oldState = this.state;
-    if (oldState.name.length > 0 && oldState.initiative.length > 0 && oldState.health.length > 0) {
-      if (!isNaN(oldState.initiative) && !isNaN(oldState.health)) {
-        let initiative = parseInt(oldState.initiative);
-        let health = parseInt(oldState.health);
+    if (name.length > 0 && initiative.length > 0 && health.length > 0) {
+      if (!isNaN(initiative) && !isNaN(health)) {
+        initiative = parseInt(initiative);
+        health = parseInt(health);
 
-        let newEntity = new Entity(oldState.name, initiative, health);
-        
+        let newEntity = new Entity(name, initiative, health);
+
         this.props.onSubmit(newEntity);
 
-        this.setState(this.cleanState);
+        nameNode.value = '';
+        initiativeNode.value = '';
+        healthNode.value = '';
       }
     }
+
+    return;
   }
 
   render () {
     return (
       <div className="row" style={this.props.style}>
-        <div className="col-xs-6 col-sm-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            valueLink={this.linkState('name')} />
-        </div>
-        
-        <div className="col-xs-6 col-sm-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Initiative"
-            valueLink={this.linkState('initiative')} />
-        </div>
-        
-        <div className="col-xs-6 col-sm-3">
-          <br className="visible-xs-block" />
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Health"
-            valueLink={this.linkState('health')} />
-        </div>
-        <div className="col-xs-6 col-sm-3">
-          <br className="visible-xs-block" />
-          <button
-            className="btn btn-primary btn-block"
-            type="submit"
-            onClick={this.submit.bind(this)}>
-            <span
-              className="glyphicon glyphicon-plus"
-              aria-hidden="true" /> Add
-          </button>
-        </div>
+        <form onSubmit={this.submit.bind(this)}>
+          <div className="col-xs-6 col-sm-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Name"
+              ref="name" />
+          </div>
+          
+          <div className="col-xs-6 col-sm-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Initiative"
+              ref="initiative" />
+          </div>
+          
+          <div className="col-xs-6 col-sm-3">
+            <br className="visible-xs-block" />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Health"
+              ref="health" />
+          </div>
+          <div className="col-xs-6 col-sm-3">
+            <br className="visible-xs-block" />
+            <button
+              className="btn btn-primary btn-block"
+              type="submit">
+              <span
+                className="glyphicon glyphicon-plus"
+                aria-hidden="true" /> Add
+            </button>
+          </div>
+        </form>
       </div>
     );
   }
