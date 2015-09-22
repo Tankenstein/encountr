@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import EntityHolderHealthForm from './EntityHolderHealthForm';
+import EntityHealthForm from './EntityHealthForm';
+import EntityNote from './EntityNote';
 
 class EntityHolder extends Component {
   constructor(props) {
@@ -30,9 +31,37 @@ class EntityHolder extends Component {
     return 'entity';
   }
 
+  getNotesButtonIconClass() {
+    if (this.state.notesOpened) {
+      return 'entity-notes-icon-close';
+    } else if (this.props.entity.get('notes').size > 0) {
+      return 'entity-notes-icon-open';
+    }
+
+    return 'entity-notes-icon-write';
+  }
+
+  toggleNotes() {
+    this.setState({notesOpened: !this.state.notesOpened});
+  }
+
   render() {
     const {entity, entityMutations} = this.props;
     const {removeEntity, changeEntityHealth} = entityMutations;
+    const {notesOpened} = this.state;
+
+    const noteNodes = entity.get('notes').map(note => (
+      <EntityNote
+        note={note}
+        key={note + entity.get('id')} />
+    ));
+
+    const noteList = (
+      <ul>
+        {noteNodes}
+      </ul>
+    );
+
     return (
       <li className={this.getEntityClass()}>
         <div className="row">
@@ -49,8 +78,17 @@ class EntityHolder extends Component {
           </div>
 
           <div className="entity-actions-column">
-            <EntityHolderHealthForm
-              onHealthChange={health => changeEntityHealth(entity, health)}/>
+            <div className="entity-health-form-column">
+              <EntityHealthForm
+                onHealthChange={health => changeEntityHealth(entity, health)} />
+            </div>
+            <div className="entity-notes-toggler-column">
+              <button
+                className="entity-notes-toggler"
+                onClick={this.toggleNotes.bind(this)}>
+                <span className={this.getNotesButtonIconClass()} />
+              </button>
+            </div>
           </div>
 
           <div className="entity-big-close-container">
@@ -61,6 +99,8 @@ class EntityHolder extends Component {
               &times;
             </button>
           </div>
+
+          {notesOpened ? noteList : ''}
         </div>
       </li>
     );

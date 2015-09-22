@@ -31,12 +31,43 @@
 .entity-actions-column {
   @extend .col-xs-12;
   @extend .col-sm-6;
+  padding: 0px;
 }
 
 .entity-big-close-container {
   @extend .col-sm-1;
   @extend .hidden-xs;
   padding-top: 5px;
+}
+
+.entity-health-form-column {
+  @extend .col-xs-10;
+}
+
+.entity-notes-toggler-column {
+  @extend .col-xs-2;
+  text-align: right;
+}
+
+.entity-notes-toggler {
+  @extend .btn;
+  @extend .btn-info;
+  @extend .btn-sm;
+}
+
+.entity-notes-icon-write {
+  @extend .glyphicon;
+  @extend .glyphicon-pencil;
+}
+
+.entity-notes-icon-open {
+  @extend .glyphicon;
+  @extend .glyphicon-menu-down;
+}
+
+.entity-notes-icon-close {
+  @extend .glyphicon;
+  @extend .glyphicon-menu-up;
 }
 
 .entity-list {

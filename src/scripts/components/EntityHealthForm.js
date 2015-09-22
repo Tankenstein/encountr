@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class EntityHolderHealthForm extends Component {
+class EntityHealthForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,4 +64,4 @@ class EntityHolderHealthForm extends Component {
   }
 }
 
-export default EntityHolderHealthForm;
+export default EntityHealthForm;

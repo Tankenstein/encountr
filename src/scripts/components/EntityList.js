@@ -12,15 +12,13 @@ class EntityList extends Component {
     return (
       <ul className="entity-list">
         {
-          entities.map((entity, index) => {
-            return (
-              <EntityHolder
-                entityMutations={this.props.entityMutations}
-                key={entity.get('id')}
-                entity={entity}
-                active={index === 0} />
-            );
-          })
+          entities.map((entity, index) => (
+            <EntityHolder
+              entityMutations={this.props.entityMutations}
+              key={entity.get('id')}
+              entity={entity}
+              active={index === 0} />
+          ))
         }
       </ul>
     );
