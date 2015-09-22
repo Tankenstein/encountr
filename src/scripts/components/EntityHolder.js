@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import EntityHolderHealthForm from './EntityHolderHealthForm';
+
 class EntityHolder extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ class EntityHolder extends Component {
 
   render() {
     const {entity, entityMutations} = this.props;
-    const {removeEntity} = entityMutations;
+    const {removeEntity, changeEntityHealth} = entityMutations;
     return (
       <li className={this.getEntityClass()}>
         <div className="row">
@@ -38,18 +40,27 @@ class EntityHolder extends Component {
             <b>{entity.get('name')}</b> with
             {' '}
             <b>{entity.get('health')}</b> hp
+            <button
+              type="button"
+              className="close visible-xs"
+              onClick={() => removeEntity(entity)}>
+              &times;
+            </button>
           </div>
 
           <div className="entity-actions-column">
-
+            <EntityHolderHealthForm
+              onHealthChange={health => changeEntityHealth(entity, health)}/>
           </div>
 
-          <button
-            type="button"
-            className="close"
-            onClick={() => removeEntity(entity)}>
-            &times;
-          </button>
+          <div className="entity-big-close-container">
+            <button
+              type="button"
+              className="close"
+              onClick={() => removeEntity(entity)}>
+              &times;
+            </button>
+          </div>
         </div>
       </li>
     );
