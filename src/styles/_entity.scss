@@ -1,0 +1,37 @@
+.entity {
+	@extend .list-group-item;
+  border-left-width: 5px;
+  padding-left: 10px;
+  border-left-style: solid;
+  border-left-color: none;
+}
+
+.entity-active {
+	@extend .entity;
+	border-left-color: $aqua-light;
+}
+
+.entity-dead {
+	@extend .entity;
+	border-left-color: $grapefruit-light;
+}
+
+.entity-dead-active {
+  @extend .entity;
+  border-left-color: $pinkrose-light;
+}
+
+.entity-text-column {
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+}
+
+.entity-actions-column {
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+}
+
+.entity-list {
+  @extend .list-group;
+  margin-top: 15px;
+}

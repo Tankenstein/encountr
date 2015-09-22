@@ -1,0 +1,84 @@
+@import "bootstrap";
+@import "bootflat";
+@import "_entity";
+
+.no-entities-alert {
+  @extend .alert;
+  @extend .alert-info;
+}
+
+.entity-form-row {
+  @extend .row;
+  margin-bottom: 15px;
+}
+
+.main-logo {
+  width: 225px;
+}
+
+.entity-form-button {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-block;
+}
+
+.new-turn-button {
+  @extend .btn;
+  @extend .btn-success;
+  @extend .btn-block;
+}
+
+.form-column {
+  @extend .col-xs-12;
+  @extend .col-sm-3;
+}
+
+li.drag-placeholder {
+  padding: 14px 15px;
+  border: 1px solid #dddddd;
+  background-color: #eeeeee;
+  list-style: none;
+}
+
+li.drag-placeholder:before {
+  content: "Drop here";
+  color: #434a54;
+  font-size: 14px;
+}
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
+$footer-height: -267px;
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: $footer-height + 3px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.site-footer, .page-wrap:after {
+  height: $footer-height; 
+}
+
+.nav-item {
+  color: #aab2bd;
+}
+
+.notes-list {
+  list-style: none;
+  padding-left: 0px;
+  padding-top: 2px;
+}
+
+.notes-list-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
