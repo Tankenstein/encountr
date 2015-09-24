@@ -30,9 +30,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="main-container">
       <div class="row">
-        <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="main-column">
           <header class="page-header">
             <h1>
               <img src="images/logo_large.svg" alt="encountr" class="main-logo">
@@ -41,19 +41,23 @@
           </header>
 
           <main id="react-mount-node">
-            We'll be ready in a second ...
+            <div class="progress">
+              <div class="main-progress">
+              </div>
+            </div>
           </main>
         </div>
       </div>
     </div>
 
-    <!--
-    <div class="container site-footer">
+    <div class="footer-container">
       <div class="row">
-         <div class="col-xs-12 col-md-8 col-md-offset-2">
+         <div class="main-column">
            <footer class="footer">
               <div class="clearfix">
-                <div class="footer-logo"><a href="#">Encountr</a></div>
+                <div class="footer-logo">
+                  <img src="images/logo_large.svg" alt="encountr" class="img-footer-logo">
+                </div>
                 <dl class="footer-nav">
                   <dt class="nav-title">ABOUT</dt>
                   <dd class="nav-item">
@@ -71,7 +75,7 @@
                 <dl class="footer-nav">
                   <dt class="nav-title">GET INVOLVED</dt>
                   <dd class="nav-item">
-                    <a href="https://github.com/Tankenstein/encountr">Encountr is built with react (and love) and hosted at github.</a>
+                    <a href="https://github.com/Tankenstein/encountr">Encountr is open source, the repo is hosted at github.</a>
                   </dd>
                 </dl>
 
@@ -86,7 +90,7 @@
             </footer>
          </div>
       </div>
-    </div>-->
+    </div>
 
     <!-- React bundle -->
     <script src="bundle.js"></script>
