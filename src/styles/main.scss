@@ -14,7 +14,7 @@
 }
 
 .main-logo {
-  width: 225px;
+  max-width: 225px;
 }
 
 .entity-form-button {
@@ -45,41 +45,4 @@ li.drag-placeholder:before {
   content: "Drop here";
   color: #434a54;
   font-size: 14px;
-}
-
-* {
-  margin: 0;
-}
-html, body {
-  height: 100%;
-}
-
-$footer-height: -267px;
-.page-wrap {
-  min-height: 100%;
-  margin-bottom: $footer-height + 3px; 
-}
-
-.page-wrap:after {
-  content: "";
-  display: block;
-}
-
-.site-footer, .page-wrap:after {
-  height: $footer-height; 
-}
-
-.nav-item {
-  color: #aab2bd;
-}
-
-.notes-list {
-  list-style: none;
-  padding-left: 0px;
-  padding-top: 2px;
-}
-
-.notes-list-item {
-  padding-top: 5px;
-  padding-bottom: 5px;
 }

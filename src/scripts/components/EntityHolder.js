@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
 import EntityHealthForm from './EntityHealthForm';
-import EntityNote from './EntityNote';
+import EntityNoteList from './EntityNoteList';
+import EntityNoteForm from './EntityNoteForm';
 
 class EntityHolder extends Component {
   constructor(props) {
     super(props);
-
     this.state = {notesOpened: false};
   }
 
@@ -47,20 +47,23 @@ class EntityHolder extends Component {
 
   render() {
     const {entity, entityMutations} = this.props;
-    const {removeEntity, changeEntityHealth} = entityMutations;
+    const {
+      removeEntity,
+      changeEntityHealth,
+      addEntityNote,
+      removeEntityNote,
+    } = entityMutations;
     const {notesOpened} = this.state;
 
-    const noteNodes = entity.get('notes').map(note => (
-      <EntityNote
-        note={note}
-        key={note + entity.get('id')} />
-    ));
-
-    const noteList = (
-      <ul>
-        {noteNodes}
-      </ul>
-    );
+    const noteNodes = [
+      <EntityNoteForm
+        addEntityNote={note => addEntityNote(entity, note)}
+        key="EntityNoteForm"/>,
+      <EntityNoteList
+        removeEntityNote={note => removeEntityNote(entity, note)}
+        notes={entity.get('notes')}
+        key="EntityNoteList" />,
+    ];
 
     return (
       <li className={this.getEntityClass()}>
@@ -71,7 +74,7 @@ class EntityHolder extends Component {
             <b>{entity.get('health')}</b> hp
             <button
               type="button"
-              className="close visible-xs"
+              className="entity-small-close-button"
               onClick={() => removeEntity(entity)}>
               &times;
             </button>
@@ -100,7 +103,7 @@ class EntityHolder extends Component {
             </button>
           </div>
 
-          {notesOpened ? noteList : ''}
+          {notesOpened ? noteNodes : ''}
         </div>
       </li>
     );

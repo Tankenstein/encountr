@@ -71,7 +71,7 @@ function entities(state = new List(), action) {
     if (noteIndex === -1) {
       return state;
     }
-    return state.setIn(notePath, notePath.delete(noteIndex));
+    return state.setIn(notePath, state.getIn(notePath).delete(noteIndex));
   }
 
   default: {

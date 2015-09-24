@@ -40,12 +40,17 @@
   padding-top: 5px;
 }
 
+.entity-small-close-button {
+  @extend .close;
+  @extend .visible-xs;
+}
+
 .entity-health-form-column {
-  @extend .col-xs-10;
+  @extend .col-xs-9;
 }
 
 .entity-notes-toggler-column {
-  @extend .col-xs-2;
+  @extend .col-xs-3;
   text-align: right;
 }
 
@@ -68,6 +73,31 @@
 .entity-notes-icon-close {
   @extend .glyphicon;
   @extend .glyphicon-menu-up;
+}
+
+.entity-note-form-container {
+  @extend .col-xs-12;
+  margin-top: 5px;
+}
+
+.entity-note-list-container {
+  @extend .col-xs-12;
+  margin-top: 5px;
+}
+
+.entity-note-list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.entity-note {
+  padding-top: 5px;
+}
+
+.entity-note-remove {
+  @extend .close;
+  float: left;
+  margin-right: 5px;
 }
 
 .entity-list {
