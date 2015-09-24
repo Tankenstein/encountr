@@ -16,9 +16,7 @@ import EntityList from './EntityList';
 import ErrorComponent from './ErrorComponent';
 import NewTurnButton from './NewTurnButton';
 
-import connectorFunction from '../services/connectorFunction';
-
-@connect(connectorFunction)
+@connect(state => state)
 class AppComponent extends Component {
 
   render() {
