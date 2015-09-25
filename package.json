@@ -33,6 +33,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.0.0",
     "gulp-minify-css": "^1.2.1",
+    "gulp-minify-html": "^1.0.4",
     "gulp-sass": "^2.0.4",
     "gulp-webserver": "^0.9.1",
     "run-sequence": "^1.1.3",

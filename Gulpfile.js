@@ -8,6 +8,7 @@ var minifyCss = require('gulp-minify-css');
 var eslint = require('gulp-eslint');
 var server = require('gulp-webserver');
 var runSequence = require('run-sequence');
+var minifyHtml = require('gulp-minify-html');
 
 var directories = {
   source: {
@@ -29,11 +30,19 @@ gulp.task('statics', function() {
   gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
     .pipe(gulp.dest(directories.distribution + '/fonts'));
 
-  gulp.src(directories.source.base + '/index.html')
-    .pipe(gulp.dest(directories.distribution));
-
   gulp.src(directories.source.base + '/images/**/*')
     .pipe(gulp.dest(directories.distribution + '/images'));
+});
+
+gulp.task('html', function() {
+  gulp.src(directories.source.base + '/index.html')
+    .pipe(gulp.dest(directories.distribution));
+});
+
+gulp.task('html:production', function() {
+  gulp.src(directories.source.base + '/index.html')
+    .pipe(minifyHtml())
+    .pipe(gulp.dest(directories.distribution));
 });
 
 gulp.task('js', function () {
@@ -90,11 +99,16 @@ gulp.task('sass:production', function() {
 });
 
 gulp.task('build', function() {
-  return runSequence('lint', ['js', 'sass', 'statics']);
+  return runSequence('lint', ['js', 'sass', 'html', 'statics']);
 });
 
 gulp.task('build:production', function() {
-  return runSequence('lint', ['js:production', 'sass:production', 'statics']);
+  return runSequence('lint', [
+    'js:production',
+    'sass:production',
+    'html:production',
+    'statics'
+  ]);
 });
 
 gulp.task('watch', function () {
