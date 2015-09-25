@@ -1,5 +1,7 @@
 import {Map, List} from 'immutable';
 
+// TODO: maybe not use a singleton here?
+
 class EntityCreator {
   id = 0;
 

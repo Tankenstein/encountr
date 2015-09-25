@@ -1,5 +1,7 @@
 import {Map} from 'immutable';
 
+// TODO: maybe not use a singleton here?
+
 class NoteCreator {
   id = 0;
 

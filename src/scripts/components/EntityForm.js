@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EntityCreator from '../services/EntityCreator';
+import entityCreator from '../services/entityCreator';
 
 // TODO: split this module out more, maybe store form state in reducer
 
@@ -23,17 +23,19 @@ class EntityForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     const {health, initiative, name} = this.state;
+    const {removeError, addEntity} = this.props;
+    const {isValidNumber, isValidString} = EntityForm;
 
-    if (!EntityForm.isValidString(name)) {
+    if (!isValidString(name)) {
       return this.props.setError(EntityForm.NAME_ERROR);
-    } else if (initiative.trim().length <= 0 || !EntityForm.isValidNumber(initiative)) {
+    } else if (initiative.trim().length <= 0 || !isValidNumber(initiative)) {
       return this.props.setError(EntityForm.INITIATIVE_ERROR);
-    } else if (health.trim().length <= 0 || !EntityForm.isValidNumber(health)) {
+    } else if (health.trim().length <= 0 || !isValidNumber(health)) {
       return this.props.setError(EntityForm.HEALTH_ERROR);
     }
 
-    this.props.removeError();
-    this.props.addEntity(EntityCreator.createEntity({
+    removeError();
+    addEntity(entityCreator.createEntity({
       health: parseInt(health.trim(), 10),
       initiative: parseInt(initiative.trim(), 10),
       name: name.trim(),

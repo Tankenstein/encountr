@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import NoteCreator from '../services/NoteCreator';
+import noteCreator from '../services/noteCreator';
 
 class EntityNoteForm extends Component {
   constructor() {
@@ -23,7 +23,7 @@ class EntityNoteForm extends Component {
     const {addEntityNote} = this.props;
     const trimmedNote = note.trim();
     if (trimmedNote.length > 0) {
-      addEntityNote(NoteCreator.createNote(trimmedNote));
+      addEntityNote(noteCreator.createNote(trimmedNote));
       this.setState({note: ''});
     }
   }
