@@ -1,8 +1,9 @@
+![encountr](https://raw.github.com/Tankenstein/encountr/master/src/images/logo_large.svg)
+
 encountr
 ========
+**A simple and easy to use encounter manager for D&D.**
 [![David](https://img.shields.io/david/Tankenstein/encountr.svg?style=flat-square)]()[![GitHub license](https://img.shields.io/github/license/Tankenstein/encountr.svg?style=flat-square)]()
-
-A simple and easy to use encounter manager for D&D.
 
 ### About
 
