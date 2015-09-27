@@ -21,16 +21,21 @@ class EntityHealthForm extends Component {
   changeHealth(isHeal) {
     const {health} = this.state;
     const {onHealthChange} = this.props;
-    if (health.length > 0 && !isNaN(health)) {
+    if (health.length > 0 && EntityHealthForm.isValidHealthString(health)) {
       const parsedHealth = (isHeal ? 1 : -1) * parseInt(health, 10);
       onHealthChange(parsedHealth);
       this.setState({health: ''});
     }
   }
 
+  static isValidHealthString(health) {
+    const trimmedHealth = health.trim();
+    return !isNaN(trimmedHealth) && trimmedHealth.indexOf('.') === -1;
+  }
+
   render() {
     const {health} = this.state;
-    const isValidHealth = health.length === 0 || !isNaN(health);
+    const isValidHealth = health.length === 0 || EntityHealthForm.isValidHealthString(health);
     return (
       <form onSubmit={this.onFormSubmit.bind(this)}>
         <div className={isValidHealth ? '' : 'has-error'}>

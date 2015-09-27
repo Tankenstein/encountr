@@ -22,13 +22,13 @@ class EntityForm extends Component {
     event.preventDefault();
     const {health, initiative, name} = this.state;
     const {removeError, addEntity} = this.props;
-    const {isValidNumber, isValidString} = EntityForm;
+    const {isValidNumberString, isValidString} = EntityForm;
 
     if (!isValidString(name)) {
       return this.props.setError(EntityForm.NAME_ERROR);
-    } else if (initiative.trim().length === 0 || !isValidNumber(initiative)) {
+    } else if (initiative.trim().length === 0 || !isValidNumberString(initiative)) {
       return this.props.setError(EntityForm.INITIATIVE_ERROR);
-    } else if (health.trim().length === 0 || !isValidNumber(health)) {
+    } else if (health.trim().length === 0 || !isValidNumberString(health)) {
       return this.props.setError(EntityForm.HEALTH_ERROR);
     }
 
@@ -54,8 +54,9 @@ class EntityForm extends Component {
     };
   }
 
-  static isValidNumber(str) {
-    return !isNaN(str.trim());
+  static isValidNumberString(str) {
+    const trimmedString = str.trim();
+    return !isNaN(trimmedString) && trimmedString.indexOf('.') === -1;
   }
 
   static isValidString(str) {
@@ -65,8 +66,8 @@ class EntityForm extends Component {
   render() {
     const valids = {
       name: true,
-      initiative: EntityForm.isValidNumber(this.state.initiative),
-      health: EntityForm.isValidNumber(this.state.health),
+      initiative: EntityForm.isValidNumberString(this.state.initiative),
+      health: EntityForm.isValidNumberString(this.state.health),
     };
 
     const invalidClass = 'has-error';
