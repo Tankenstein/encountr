@@ -1,0 +1,15 @@
+.entity-form-row {
+  @extend .row;
+  margin-bottom: 15px;
+}
+
+.entity-form-button {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-block;
+}
+
+.form-column {
+  @extend .col-xs-12;
+  @extend .col-sm-3;
+}
