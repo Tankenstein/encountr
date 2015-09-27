@@ -5,6 +5,7 @@ import {
   ADD_ENTITY_NOTE,
   REMOVE_ENTITY_NOTE,
   NEW_TURN,
+  CHANGE_ENTITY_ORDER,
 } from '../constants/entityConstants';
 
 export function addEntity(entity) {
@@ -43,6 +44,14 @@ export function removeEntityNote(entity, note) {
     type: REMOVE_ENTITY_NOTE,
     entity,
     note,
+  };
+}
+
+export function changeEntityOrder(fromIndex, toIndex) {
+  return {
+    type: CHANGE_ENTITY_ORDER,
+    fromIndex,
+    toIndex,
   };
 }
 

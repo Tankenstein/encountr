@@ -7,8 +7,8 @@ const STORAGE_KEY = 'encountr_entities';
 
 function highestIdReducer(highestId, immutableMapWithId) {
   const id = immutableMapWithId.get('id');
-  if (id > highestId) {
-    return id + 1;
+  if (id >= highestId) {
+    return id;
   }
   return highestId;
 }
@@ -33,21 +33,21 @@ const storageConfig = {
     if (entities !== null) {
       const entityId = entities.reduce(highestIdReducer, -1);
       if (entityId > entityCreator.id) {
-        entityCreator.id = entityId;
+        entityCreator.id = entityId + 1;
       }
 
       const noteId = entities.reduce((highestNoteId, entity) => {
         const notes = entity.get('notes');
         const highestEntityNoteId = notes.reduce(highestIdReducer, -1);
-
-        if (highestEntityNoteId > highestNoteId) {
-          return highestEntityNoteId + 1;
+        if (highestEntityNoteId >= highestNoteId) {
+          return highestEntityNoteId;
         }
-        return highestEntityNoteId;
-      });
+
+        return highestNoteId;
+      }, -1);
 
       if (noteId > noteCreator.id) {
-        noteCreator.id = noteId;
+        noteCreator.id = noteId + 1;
       }
 
       return {

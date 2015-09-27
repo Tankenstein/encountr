@@ -6,6 +6,11 @@
   border-left-color: none;
 }
 
+.entity-dragging {
+  @extend .entity;
+  background-color: #CCCCCC;
+}
+
 .entity-active {
 	@extend .entity;
 	border-left-color: $aqua-light;

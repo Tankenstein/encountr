@@ -12,15 +12,18 @@ class EntityHolder extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (nextProps.entity !== this.props.entity ||
+      nextProps.dragging !== this.props.dragging ||
       nextProps.active !== this.props.active ||
       this.state.notesOpened !== nextState.notesOpened);
   }
 
   getEntityClass() {
-    const {entity, active} = this.props;
+    const {entity, active, dragging} = this.props;
     const isDead = entity.get('health') <= 0;
 
-    if (isDead && !active) {
+    if (dragging) {
+      return 'entity-dragging';
+    } else if (isDead && !active) {
       return 'entity-dead';
     } else if (active && !isDead) {
       return 'entity-active';
@@ -46,13 +49,14 @@ class EntityHolder extends Component {
   }
 
   render() {
-    const {entity, entityMutations} = this.props;
+    const {entity, entityMutations, dragEvents, index} = this.props;
     const {
       removeEntity,
       changeEntityHealth,
       addEntityNote,
       removeEntityNote,
     } = entityMutations;
+    const {onDragStart, onDragEnd, onDragOver} = dragEvents;
     const {notesOpened} = this.state;
 
     const noteNodes = [
@@ -66,7 +70,13 @@ class EntityHolder extends Component {
     ];
 
     return (
-      <li className={this.getEntityClass()}>
+      <li
+        className={this.getEntityClass()}
+        draggable="true"
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
+        data-index={index}>
         <div className="row">
           <div className="entity-text-column">
             <b>{entity.get('name')}</b> with

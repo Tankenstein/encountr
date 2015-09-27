@@ -22,13 +22,12 @@
     "react": "^0.13.3",
     "react-redux": "^2.1.2",
     "redux": "^3.0.0",
-    "redux-localstorage": "^0.4.0",
-    "redux-localstorage-filter": "^0.1.1"
+    "redux-localstorage": "^0.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.2",
     "babelify": "^6.3.0",
-    "browserify": "^11.1.0",
+    "browserify": "^11.2.0",
     "eslint-config-airbnb": "0.0.8",
     "eslint-plugin-react": "^3.4.1",
     "gulp": "^3.9.0",

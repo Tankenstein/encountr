@@ -4,11 +4,9 @@ import entityCreator from '../services/entityCreator';
 // TODO: split this module out more, maybe store form state in reducer
 
 class EntityForm extends Component {
-  /* eslint-disable */
   static NAME_ERROR = 'Please name your entity.';
   static INITIATIVE_ERROR = 'Please add an initiative number';
   static HEALTH_ERROR = 'Please add a health number';
-  /* eslint-enable */
 
   constructor(props) {
     super(props);
@@ -28,9 +26,9 @@ class EntityForm extends Component {
 
     if (!isValidString(name)) {
       return this.props.setError(EntityForm.NAME_ERROR);
-    } else if (initiative.trim().length <= 0 || !isValidNumber(initiative)) {
+    } else if (initiative.trim().length === 0 || !isValidNumber(initiative)) {
       return this.props.setError(EntityForm.INITIATIVE_ERROR);
-    } else if (health.trim().length <= 0 || !isValidNumber(health)) {
+    } else if (health.trim().length === 0 || !isValidNumber(health)) {
       return this.props.setError(EntityForm.HEALTH_ERROR);
     }
 

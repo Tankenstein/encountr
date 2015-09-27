@@ -7,6 +7,7 @@ import {
   ADD_ENTITY_NOTE,
   REMOVE_ENTITY_NOTE,
   NEW_TURN,
+  CHANGE_ENTITY_ORDER,
 } from '../constants/entityConstants';
 
 function entities(state = new List(), action) {
@@ -72,6 +73,11 @@ function entities(state = new List(), action) {
       return state;
     }
     return state.setIn(notePath, state.getIn(notePath).delete(noteIndex));
+  }
+
+  case CHANGE_ENTITY_ORDER: {
+    const {fromIndex, toIndex} = action;
+    return state.delete(toIndex, 1).splice(fromIndex, 0, state.get(toIndex));
   }
 
   default: {

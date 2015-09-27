@@ -8,6 +8,7 @@ import {
   addEntityNote,
   removeEntityNote,
   newTurn,
+  changeEntityOrder,
 } from '../actions/entityActions';
 import {setError, removeError} from '../actions/errorActions';
 
@@ -36,6 +37,7 @@ class AppComponent extends Component {
         onNewTurn={() => dispatch(newTurn())}/>,
       <EntityList
         key="entityList"
+        changeEntityOrder={(from, to) => dispatch(changeEntityOrder(from, to))}
         entityMutations={entityMutations}
         entities={entities}/>,
     ];
