@@ -3,7 +3,9 @@
 encountr
 ========
 **A simple and easy to use encounter manager for D&D.**
+
 [![David](https://img.shields.io/david/Tankenstein/encountr.svg?style=flat-square)](https://david-dm.org/Tankenstein/encountr)
+[![devDependency Status](https://david-dm.org/Tankenstein/encountr/dev-status.svg?style=flat-square)](https://david-dm.org/Tankenstein/encountr#info=devDependencies)
 [![GitHub license](https://img.shields.io/github/license/Tankenstein/encountr.svg?style=flat-square)](https://github.com/Tankenstein/encountr/blob/master/LICENSE.md)
 
 ### About
