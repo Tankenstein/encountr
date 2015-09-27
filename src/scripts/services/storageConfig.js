@@ -29,7 +29,7 @@ const storageConfig = {
     return state => state.entities;
   },
 
-  merge(_, entities) {
+  merge(__, entities) {
     if (entities !== null) {
       const entityId = entities.reduce(highestIdReducer, -1);
       if (entityId > entityCreator.id) {

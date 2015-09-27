@@ -20,7 +20,7 @@
     "bootstrap-sass": "^3.3.5",
     "immutable": "^3.7.5",
     "react": "^0.13.3",
-    "react-redux": "^2.1.2",
+    "react-redux": "^3.0.0",
     "redux": "^3.0.0",
     "redux-localstorage": "^0.4.0"
   },
@@ -28,7 +28,7 @@
     "babel-eslint": "^4.1.2",
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
-    "eslint-config-airbnb": "0.0.8",
+    "eslint-config-airbnb": "0.0.9",
     "eslint-plugin-react": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",

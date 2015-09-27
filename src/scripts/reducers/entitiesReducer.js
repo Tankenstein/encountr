@@ -13,11 +13,11 @@ import {
 function entities(state = new List(), action) {
   switch (action.type) {
   case ADD_ENTITY: {
-    for (let i = 0; i <= state.size; i++) {
-      if (i === state.size) {
+    for (let index = 0; index <= state.size; index++) {
+      if (index === state.size) {
         return state.push(action.entity);
-      } else if (action.entity.get('initiative') >= state.get(i).get('initiative')) {
-        return state.splice(i, 0, action.entity);
+      } else if (action.entity.get('initiative') >= state.get(index).get('initiative')) {
+        return state.splice(index, 0, action.entity);
       }
     }
     return state;
@@ -33,7 +33,7 @@ function entities(state = new List(), action) {
 
   case REMOVE_ENTITY: {
     const {entity} = action;
-    const index = state.findIndex(e => e.get('id') === entity.get('id'));
+    const index = state.findIndex(en => en.get('id') === entity.get('id'));
     if (index === -1) {
       return state;
     }
@@ -42,7 +42,7 @@ function entities(state = new List(), action) {
 
   case CHANGE_ENTITY_HEALTH: {
     const {entity, healthChange} = action;
-    const index = state.findIndex(e => e.get('id') === entity.get('id'));
+    const index = state.findIndex(en => en.get('id') === entity.get('id'));
     if (index === -1) {
       return state;
     }
@@ -52,7 +52,7 @@ function entities(state = new List(), action) {
 
   case ADD_ENTITY_NOTE: {
     const {entity, note} = action;
-    const index = state.findIndex(e => e.get('id') === entity.get('id'));
+    const index = state.findIndex(en => en.get('id') === entity.get('id'));
     if (index === -1) {
       return state;
     }
@@ -62,13 +62,13 @@ function entities(state = new List(), action) {
 
   case REMOVE_ENTITY_NOTE: {
     const {entity, note} = action;
-    const index = state.findIndex(e => e.get('id') === entity.get('id'));
+    const index = state.findIndex(en => en.get('id') === entity.get('id'));
     if (index === -1) {
       return state;
     }
     const notePath = [index, 'notes'];
     const entityNotes = state.getIn(notePath);
-    const noteIndex = entityNotes.findIndex(n => n.get('id') === note.get('id'));
+    const noteIndex = entityNotes.findIndex(no => no.get('id') === note.get('id'));
     if (noteIndex === -1) {
       return state;
     }

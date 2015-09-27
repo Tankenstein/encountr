@@ -20,7 +20,7 @@ class EntityList extends Component {
     event.dataTransfer.effectAllowed = 'move';
     try {
       event.dataTransfer.setData('text/html', null);
-    } catch (_) {
+    } catch (__) {
       event.dataTransfer.setData('text', '');
     }
   }

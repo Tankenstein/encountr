@@ -24,9 +24,9 @@ class AppComponent extends Component {
     const {dispatch, entities, error} = this.props;
     const entityMutations = {
       removeEntity: entity => dispatch(removeEntity(entity)),
-      changeEntityHealth: (e, hp) => dispatch(changeEntityHealth(e, hp)),
-      addEntityNote: (e, n) => dispatch(addEntityNote(e, n)),
-      removeEntityNote: (e, n) => dispatch(removeEntityNote(e, n)),
+      changeEntityHealth: (entity, healthChange) => dispatch(changeEntityHealth(entity, healthChange)),
+      addEntityNote: (entity, note) => dispatch(addEntityNote(entity, note)),
+      removeEntityNote: (entity, note) => dispatch(removeEntityNote(entity, note)),
     };
 
     const entityAdder = entity => dispatch(addEntity(entity));
