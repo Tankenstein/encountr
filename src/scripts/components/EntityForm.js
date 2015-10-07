@@ -81,7 +81,6 @@ class EntityForm extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Name"
-                ref="name"
                 value={this.state.name}
                 onChange={this.linkState('name')} />
             </div>
@@ -94,7 +93,6 @@ class EntityForm extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Initiative"
-                ref="initiative"
                 value={this.state.initiative}
                 onChange={this.linkState('initiative')} />
             </div>
@@ -107,7 +105,6 @@ class EntityForm extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Health"
-                ref="health"
                 value={this.state.health}
                 onChange={this.linkState('health')} />
             </div>

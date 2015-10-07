@@ -20,24 +20,34 @@ import NewTurnButton from './NewTurnButton';
 @connect(state => state)
 class AppComponent extends Component {
 
-  render() {
-    const {dispatch, entities, error} = this.props;
-    const entityMutations = {
+  getEntityMutations() {
+    const {dispatch} = this.props;
+
+    return {
       removeEntity: entity => dispatch(removeEntity(entity)),
       changeEntityHealth: (entity, healthChange) => dispatch(changeEntityHealth(entity, healthChange)),
       addEntityNote: (entity, note) => dispatch(addEntityNote(entity, note)),
       removeEntityNote: (entity, note) => dispatch(removeEntityNote(entity, note)),
     };
+  }
+
+  render() {
+    const {dispatch, entities, error} = this.props;
+    const entityMutations = this.getEntityMutations();
 
     const entityAdder = entity => dispatch(addEntity(entity));
+    const newTurnCreator = () => dispatch(newTurn());
+    const errorSetter = errorName => dispatch(setError(errorName));
+    const errorRemover = () => dispatch(removeError());
+    const entityOrderChanger = (from, to) => dispatch(changeEntityOrder(from, to));
 
     const entityHandlerNodes = [
       <NewTurnButton
         key="newTurnButton"
-        onNewTurn={() => dispatch(newTurn())}/>,
+        onNewTurn={newTurnCreator}/>,
       <EntityList
         key="entityList"
-        changeEntityOrder={(from, to) => dispatch(changeEntityOrder(from, to))}
+        changeEntityOrder={entityOrderChanger}
         entityMutations={entityMutations}
         entities={entities}/>,
     ];
@@ -55,15 +65,15 @@ class AppComponent extends Component {
     const errorComponent = (
       <ErrorComponent
         error={error}
-        removeError={() => dispatch(removeError())} />
+        removeError={errorRemover} />
     );
 
     return (
       <div>
         <EntityForm
           addEntity={entityAdder}
-          setError={errorName => dispatch(setError(errorName))}
-          removeError={() => dispatch(removeError())}/>
+          setError={errorSetter}
+          removeError={errorRemover}/>
         {error ? errorComponent : ''}
         {entities.size ? entityHandlerNodes : noEntitiesNode}
       </div>
