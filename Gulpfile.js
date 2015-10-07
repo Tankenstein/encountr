@@ -102,8 +102,12 @@ gulp.task('build', function() {
   return runSequence('lint', ['js', 'sass', 'html', 'statics']);
 });
 
+gulp.task('env:production', function() {
+  return process.env.NODE_ENV = 'development';
+});
+
 gulp.task('build:production', function() {
-  return runSequence('lint', [
+  return runSequence(['lint', 'env:production'], [
     'js:production',
     'sass:production',
     'html:production',

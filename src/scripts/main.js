@@ -1,4 +1,5 @@
-import React, {render} from 'react';
+import React from 'react';
+import {render} from 'react-dom';
 import {compose, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import persistState from 'redux-localstorage';
@@ -20,7 +21,7 @@ function main() {
 
   render((
     <Provider store={appStore}>
-      {() => <AppComponent />}
+      <AppComponent />
     </Provider>
   ), target);
 }
