@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class EntityHealthForm extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class EntityHealthForm extends Component {
 
   onHealthInputChange(event) {
     const health = event.target.value.trim();
-    this.setState({health});
+    this.setState({ health });
   }
 
   onFormSubmit(event) {
@@ -19,12 +19,12 @@ class EntityHealthForm extends Component {
   }
 
   changeHealth(isHeal) {
-    const {health} = this.state;
-    const {onHealthChange} = this.props;
+    const { health } = this.state;
+    const { onHealthChange } = this.props;
     if (health.length > 0 && EntityHealthForm.isValidHealthString(health)) {
       const parsedHealth = (isHeal ? 1 : -1) * parseInt(health, 10);
       onHealthChange(parsedHealth);
-      this.setState({health: ''});
+      this.setState({ health: '' });
     }
   }
 
@@ -34,7 +34,7 @@ class EntityHealthForm extends Component {
   }
 
   render() {
-    const {health} = this.state;
+    const { health } = this.state;
     const isValidHealth = health.length === 0 || EntityHealthForm.isValidHealthString(health);
     return (
       <form onSubmit={this.onFormSubmit.bind(this)}>

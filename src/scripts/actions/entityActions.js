@@ -56,5 +56,5 @@ export function changeEntityOrder(fromIndex, toIndex) {
 }
 
 export function newTurn() {
-  return {type: NEW_TURN};
+  return { type: NEW_TURN };
 }

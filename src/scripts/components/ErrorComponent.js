@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ErrorComponent extends Component {
   render() {
-    const {error} = this.props;
+    const { error } = this.props;
     return (
       <div className="row">
         <div className="col-xs-12">

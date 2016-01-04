@@ -4,11 +4,11 @@ var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
 var concatCss = require('gulp-concat');
-var minifyCss = require('gulp-minify-css');
+var minifyCss = require('gulp-cssnano');
 var eslint = require('gulp-eslint');
 var server = require('gulp-webserver');
 var runSequence = require('run-sequence');
-var minifyHtml = require('gulp-minify-html');
+var minifyHtml = require('gulp-htmlmin');
 
 var directories = {
   source: {
@@ -41,7 +41,16 @@ gulp.task('html', function() {
 
 gulp.task('html:production', function() {
   gulp.src(directories.source.base + '/index.html')
-    .pipe(minifyHtml())
+    .pipe(minifyHtml({
+      collapseWhitespace: true,
+      removeAttributeQuotes: true,
+      removeRedundantAttributes: true,
+      useShortDoctype: true,
+      removeEmptyAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      removeOptionalTags: true,
+    }))
     .pipe(gulp.dest(directories.distribution));
 });
 
@@ -52,7 +61,7 @@ gulp.task('js', function () {
     debug: true
   })
   .transform(babelify.configure({
-    optional: ["es7"]
+    presets: ['es2015', 'stage-0', 'react']
   }))
   .bundle()
   .pipe(source('bundle.js'))
@@ -66,7 +75,7 @@ gulp.task('js:production', function () {
     debug: false
   })
   .transform(babelify.configure({
-    optional: ["es7"]
+    presets: ['es2015', 'stage-0', 'react']
   }))
   .transform({
     global: true,

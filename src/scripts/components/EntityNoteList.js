@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import EntityNote from './EntityNote';
 
@@ -8,7 +8,7 @@ class EntityNoteList extends Component {
   }
 
   render() {
-    const {notes, removeEntityNote} = this.props;
+    const { notes, removeEntityNote } = this.props;
 
     const noteNodes = notes.map(note => (
       <EntityNote

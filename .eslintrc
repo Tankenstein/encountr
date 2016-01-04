@@ -1,7 +1,9 @@
 {
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "rules": {
   	"react/sort-comp": 0,
-  	"react/prop-types": 0
+  	"react/prop-types": 0,
+    "react/jsx-closing-bracket-location": [2, "after-props"]
   }
 }

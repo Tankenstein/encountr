@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 import entities from './entitiesReducer';
 import error from './errorReducer';

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class EntityNote extends Component {
   render() {
-    const {removeEntityNote, note} = this.props;
+    const { removeEntityNote, note } = this.props;
 
     return (
       <li className="entity-note">

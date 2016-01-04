@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import {
   addEntity,
@@ -10,18 +10,17 @@ import {
   newTurn,
   changeEntityOrder,
 } from '../actions/entityActions';
-import {setError, removeError} from '../actions/errorActions';
+import { setError, removeError } from '../actions/errorActions';
 
 import EntityForm from './EntityForm';
 import EntityList from './EntityList';
 import ErrorComponent from './ErrorComponent';
 import NewTurnButton from './NewTurnButton';
 
-@connect(state => state)
 class AppComponent extends Component {
 
   getEntityMutations() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
 
     return {
       removeEntity: entity => dispatch(removeEntity(entity)),
@@ -32,7 +31,7 @@ class AppComponent extends Component {
   }
 
   render() {
-    const {dispatch, entities, error} = this.props;
+    const { dispatch, entities, error } = this.props;
     const entityMutations = this.getEntityMutations();
 
     const entityAdder = entity => dispatch(addEntity(entity));
@@ -81,4 +80,4 @@ class AppComponent extends Component {
   }
 }
 
-export default AppComponent;
+export default connect(state => state)(AppComponent);

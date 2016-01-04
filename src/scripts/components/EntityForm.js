@@ -20,9 +20,9 @@ class EntityForm extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    const {health, initiative, name} = this.state;
-    const {removeError, addEntity} = this.props;
-    const {isValidNumberString, isValidString} = EntityForm;
+    const { health, initiative, name } = this.state;
+    const { removeError, addEntity } = this.props;
+    const { isValidNumberString, isValidString } = EntityForm;
 
     if (!isValidString(name)) {
       return this.props.setError(EntityForm.NAME_ERROR);

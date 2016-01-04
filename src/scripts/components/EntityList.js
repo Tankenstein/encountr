@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import EntityHolder from './EntityHolder';
 
 class EntityList extends Component {
   constructor(props) {
     super(props);
-    this.state = {dragging: undefined};
+    this.state = { dragging: undefined };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -26,13 +26,13 @@ class EntityList extends Component {
   }
 
   onDragEnd() {
-    this.setState({dragging: undefined});
+    this.setState({ dragging: undefined });
   }
 
   onDragOver(event) {
     event.preventDefault();
-    const {changeEntityOrder} = this.props;
-    const {dragging} = this.state;
+    const { changeEntityOrder } = this.props;
+    const { dragging } = this.state;
     const over = event.currentTarget;
     const from = dragging !== undefined ? dragging : this.dragged;
     let to = parseInt(over.dataset.index, 10);
@@ -45,12 +45,12 @@ class EntityList extends Component {
     if (from < to) {
       to--;
     }
-    this.setState({dragging: to});
+    this.setState({ dragging: to });
     changeEntityOrder(from, to);
   }
 
   render() {
-    const {entities} = this.props;
+    const { entities } = this.props;
     const dragEvents = {
       onDragEnd: this.onDragEnd.bind(this),
       onDragStart: this.onDragStart.bind(this),

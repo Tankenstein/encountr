@@ -1,7 +1,7 @@
 import React from 'react';
-import {render} from 'react-dom';
-import {compose, createStore} from 'redux';
-import {Provider} from 'react-redux';
+import { render } from 'react-dom';
+import { compose, createStore } from 'redux';
+import { Provider } from 'react-redux';
 import persistState from 'redux-localstorage';
 
 import AppComponent from './components/AppComponent';

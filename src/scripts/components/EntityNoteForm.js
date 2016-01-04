@@ -5,7 +5,7 @@ import createNote from '../services/createNote';
 class EntityNoteForm extends Component {
   constructor() {
     super();
-    this.state = {note: ''};
+    this.state = { note: '' };
   }
 
   onFormSubmit(event) {
@@ -15,7 +15,7 @@ class EntityNoteForm extends Component {
 
   onNoteChange(event) {
     const note = event.target.value;
-    this.setState({note});
+    this.setState({ note });
   }
 
   addNote() {

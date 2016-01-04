@@ -1,4 +1,4 @@
-import {SET_ERROR, REMOVE_ERROR} from '../constants/errorConstants';
+import { SET_ERROR, REMOVE_ERROR } from '../constants/errorConstants';
 
 export function setError(error) {
   return {
@@ -8,5 +8,5 @@ export function setError(error) {
 }
 
 export function removeError() {
-  return {type: REMOVE_ERROR};
+  return { type: REMOVE_ERROR };
 }
