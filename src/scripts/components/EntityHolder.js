@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import EntityHealthForm from './EntityHealthForm';
 import EntityNoteList from './EntityNoteList';
@@ -7,7 +7,7 @@ import EntityNoteForm from './EntityNoteForm';
 class EntityHolder extends Component {
   constructor(props) {
     super(props);
-    this.state = {notesOpened: false};
+    this.state = { notesOpened: false };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -18,7 +18,7 @@ class EntityHolder extends Component {
   }
 
   getEntityClass() {
-    const {entity, active, dragging} = this.props;
+    const { entity, active, dragging } = this.props;
     const isDead = entity.get('health') <= 0;
 
     if (dragging) {

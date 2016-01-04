@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import entityCreator from '../services/entityCreator';
+import React, { Component } from 'react';
+import createEntity from '../services/createEntity';
 
 // TODO: split this module out more, maybe store form state in reducer
 
@@ -33,7 +33,7 @@ class EntityForm extends Component {
     }
 
     removeError();
-    addEntity(entityCreator.createEntity({
+    addEntity(createEntity({
       health: parseInt(health.trim(), 10),
       initiative: parseInt(initiative.trim(), 10),
       name: name.trim(),

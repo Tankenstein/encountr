@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import noteCreator from '../services/noteCreator';
+import createNote from '../services/createNote';
 
 class EntityNoteForm extends Component {
   constructor() {
@@ -19,17 +19,17 @@ class EntityNoteForm extends Component {
   }
 
   addNote() {
-    const {note} = this.state;
-    const {addEntityNote} = this.props;
+    const { note } = this.state;
+    const { addEntityNote } = this.props;
     const trimmedNote = note.trim();
     if (trimmedNote.length > 0) {
-      addEntityNote(noteCreator.createNote(trimmedNote));
-      this.setState({note: ''});
+      addEntityNote(createNote(trimmedNote));
+      this.setState({ note: '' });
     }
   }
 
   render() {
-    const {note} = this.state;
+    const { note } = this.state;
 
     return (
       <div className="entity-note-form-container">
