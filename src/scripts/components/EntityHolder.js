@@ -45,19 +45,19 @@ class EntityHolder extends Component {
   }
 
   toggleNotes() {
-    this.setState({notesOpened: !this.state.notesOpened});
+    this.setState({ notesOpened: !this.state.notesOpened });
   }
 
   render() {
-    const {entity, entityMutations, dragEvents, index} = this.props;
+    const { entity, entityMutations, dragEvents, index } = this.props;
     const {
       removeEntity,
       changeEntityHealth,
       addEntityNote,
       removeEntityNote,
     } = entityMutations;
-    const {onDragStart, onDragEnd, onDragOver} = dragEvents;
-    const {notesOpened} = this.state;
+    const { onDragStart, onDragEnd, onDragOver } = dragEvents;
+    const { notesOpened } = this.state;
 
     const noteNodes = [
       <EntityNoteForm
