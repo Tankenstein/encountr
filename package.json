@@ -1,6 +1,6 @@
 {
   "name": "encountr",
-  "version": "0.3.3",
+  "version": "1.0.0",
   "description": "A D&D encounter manager built with react.",
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.0.1",
     "gulp-eslint": "^1.1.1",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-htmlmin": "^1.3.0",
     "gulp-sass": "^2.1.1",
     "gulp-webserver": "^0.9.1",
