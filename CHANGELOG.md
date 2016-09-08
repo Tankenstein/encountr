@@ -1,3 +1,7 @@
+# 1.0.0 2016-8-09
+
+Moved to github pages. 1.0 because it's stable. Development stopped since last release a year ago.
+
 # 0.3.0 2015-27-09
 
 This is a refactoring / bugfixing update with slight changes.
