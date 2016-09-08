@@ -9,6 +9,7 @@ var eslint = require('gulp-eslint');
 var server = require('gulp-webserver');
 var runSequence = require('run-sequence');
 var minifyHtml = require('gulp-htmlmin');
+var deployToPages = require('gulp-gh-pages');
 
 var directories = {
   source: {
@@ -29,6 +30,9 @@ gulp.task('lint', function() {
 gulp.task('statics', function() {
   gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
     .pipe(gulp.dest(directories.distribution + '/fonts'));
+
+  gulp.src(directories.source.base + '/CNAME')
+    .pipe(gulp.dest(directories.distribution));
 
   gulp.src(directories.source.base + '/images/**/*')
     .pipe(gulp.dest(directories.distribution + '/images'));
@@ -134,6 +138,11 @@ gulp.task('serve', function () {
       livereload: true,
       open: true
     }));
+});
+
+gulp.task('deploy', ['build:production'], function() {
+  return gulp.src('./' + directories.distribution + '/**/*')
+    .pipe(deployToPages());
 });
 
 gulp.task('default', ['build', 'watch']);
